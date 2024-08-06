@@ -1,9 +1,9 @@
 import numpy as np
-from gym.utils import seeding
+from gymnasium.utils import seeding
 from airlift.envs.events.event_interval_generator import NoEventIntervalGen
 from airlift.envs import ActionHelper, ObservationHelper as oh, StaticCargoGenerator, NOAIRPORT_ID, PlaneState
 from airlift.tests.util import generate_environment
-from gym import logger
+from gymnasium import logger
 
 logger.set_level(logger.WARN)
 

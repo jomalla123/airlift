@@ -9,8 +9,8 @@ from typing import List, Dict, Tuple, NamedTuple, Optional, Collection
 import pickle
 import networkx as nx
 from PIL.Image import Image
-from gym import logger, Space
-from gym.utils import seeding
+from gymnasium import logger, Space
+from gymnasium.utils import seeding
 from networkx import DiGraph
 from pettingzoo.utils.env_logger import EnvLogger
 
@@ -20,8 +20,8 @@ from airlift.envs.cargo import CargoID, Cargo
 from airlift.envs.renderer import EnvRenderer, FlatRenderer, default_height_in_pixels
 from pettingzoo import ParallelEnv
 from airlift.envs.agents import EnvAgent, AgentID, PlaneState
-from gym.spaces import Discrete, MultiBinary
-import gym
+from gymnasium.spaces import Discrete, MultiBinary
+import gymnasium
 import airlift.envs.spaces as airliftspaces
 from airlift.envs.route_map import RouteMap
 
@@ -582,25 +582,25 @@ class AirliftEnv(ParallelEnv):
         return max(self.world_generator.max_cargo_per_episode, 1)
 
     def _agent_space(self):
-        return gym.spaces.Dict({
-            "state": gym.spaces.Discrete(max(s.value for s in PlaneState) + 1),
-            "current_airport": gym.spaces.Discrete(self.world_generator.max_airports + 1),
+        return gymnasium.spaces.Dict({
+            "state": gymnasium.spaces.Discrete(max(s.value for s in PlaneState) + 1),
+            "current_airport": gymnasium.spaces.Discrete(self.world_generator.max_airports + 1),
             "cargo_onboard": airliftspaces.List(Discrete(self._largest_cargo_id),
                                                 self.max_cargo_on_airplane),
             "current_weight": Discrete(10000),
-            "plane_type": gym.spaces.Discrete(len(self.world_generator.plane_types)),
+            "plane_type": gymnasium.spaces.Discrete(len(self.world_generator.plane_types)),
             "max_weight": Discrete(10000),
             "cargo_at_current_airport": airliftspaces.List(Discrete(self._largest_cargo_id),
                                                            self.max_cargo_on_airplane),
             "available_routes": airliftspaces.List(Discrete(self.world_generator.max_airports + 1),
                                                    self.world_generator.max_airports),
             "next_action": self.action_space(self.agents[0]),
-            "destination": gym.spaces.Discrete(self.world_generator.max_airports + 1)
+            "destination": gymnasium.spaces.Discrete(self.world_generator.max_airports + 1)
         })
 
     @functools.lru_cache(maxsize=None)  # Ensures that we always return the same space (not a copy)
     def state_space(self) -> Space:
-        route_map = gym.spaces.Dict({})
+        route_map = gymnasium.spaces.Dict({})
         for plane in self.world_generator.plane_types:
             route_map[plane.id] = airliftspaces.DiGraph(self.world_generator.max_airports + 1,
                                                         ["working_capacity"],
@@ -621,7 +621,7 @@ class AirliftEnv(ParallelEnv):
                                                                        })
 
         scenario_observation = airliftspaces.NamedTuple(ScenarioObservation, {'processing_time': Discrete(1000)})
-        return gym.spaces.Dict({
+        return gymnasium.spaces.Dict({
             "route_map": route_map,
             "active_cargo": airliftspaces.List(cargo_info_space, self.world_generator.max_cargo_per_episode),
             "plane_types": airliftspaces.List(
@@ -629,7 +629,7 @@ class AirliftEnv(ParallelEnv):
                                                                 'max_weight': Discrete(10000)}),
                 len(self.world_generator.plane_types)),
             "event_new_cargo": airliftspaces.List(cargo_info_space, self.world_generator.max_cargo_per_episode),
-            "agents": gym.spaces.Dict({a: self._agent_space() for a in self.possible_agents}),
+            "agents": gymnasium.spaces.Dict({a: self._agent_space() for a in self.possible_agents}),
             "scenario_info": airliftspaces.List(scenario_observation, 1)
         })
 
@@ -754,13 +754,13 @@ class AirliftEnv(ParallelEnv):
     @property
     @functools.lru_cache(maxsize=None)
     def action_spaces(self) -> Dict[AgentID, Space]:
-        sp = gym.spaces.Dict({
+        sp = gymnasium.spaces.Dict({
             "priority": Discrete(NUM_PRIORITIES),
             "cargo_to_load": airliftspaces.List(Discrete(self._largest_cargo_id),
                                                 self.max_cargo_on_airplane),
             "cargo_to_unload": airliftspaces.List(Discrete(self._largest_cargo_id),
                                                   self.max_cargo_on_airplane),
-            "destination": gym.spaces.Discrete(self.world_generator.max_airports + 1)
+            "destination": gymnasium.spaces.Discrete(self.world_generator.max_airports + 1)
         })
 
         return {a: sp for a in self.possible_agents}  # All agents should the same observation space

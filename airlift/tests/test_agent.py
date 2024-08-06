@@ -111,15 +111,15 @@ def test_fullrun(env, render):
 
     # # Testing flattening spaces - this should really be done somewhere else, maybe a Jupyter notebook
     # os = env.observation_space(0)
-    # test = gym.spaces.flatdim( os["cargo_at_current_airport"] )
-    # test2 = gym.spaces.flatten(os["cargo_at_current_airport"], env.observe(0)["cargo_at_current_airport"])
+    # test = gymnasium.spaces.flatdim( os["cargo_at_current_airport"] )
+    # test2 = gymnasium.spaces.flatten(os["cargo_at_current_airport"], env.observe(0)["cargo_at_current_airport"])
     #
     # states = env.state_space()
-    # test3 = gym.spaces.flatdim( states["route_map"] )
-    # test4 = gym.spaces.flatten( states["route_map"], env.state()["route_map"] )
+    # test3 = gymnasium.spaces.flatdim( states["route_map"] )
+    # test4 = gymnasium.spaces.flatten( states["route_map"], env.state()["route_map"] )
     #
-    # test5 = gym.spaces.flatten(os, env.observe(0))
-    # test6 = gym.spaces.flatten(states, env.state())
+    # test5 = gymnasium.spaces.flatten(os, env.observe(0))
+    # test6 = gymnasium.spaces.flatten(states, env.state())
 
     assert env.observe(agent)["cargo_at_current_airport"] == [task.id]
     assert not env.observe(agent)["cargo_onboard"]

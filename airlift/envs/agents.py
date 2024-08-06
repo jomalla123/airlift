@@ -1,6 +1,6 @@
 from enum import IntEnum
 from typing import Tuple, List, Set, Dict, Collection
-from gym import logger
+from gymnasium import logger
 
 from airlift.envs.plane_types import PlaneType
 from airlift.envs.cargo import Cargo, CargoID

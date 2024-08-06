@@ -3,12 +3,12 @@ import random
 
 import numpy as np
 from airlift.envs.agents import EnvAgent, PlaneState
-from gym.utils import seeding
+from gymnasium.utils import seeding
 from airlift.envs.events.event_interval_generator import NoEventIntervalGen
 from airlift.envs import ActionHelper, ObservationHelper as oh, HardcodedCargoGenerator, NOAIRPORT_ID, CargoInfo, \
     StaticCargoGenerator
 from airlift.tests.util import generate_environment
-from gym import logger
+from gymnasium import logger
 
 from airlift.utils.airplane_queue import AirplaneQueue
 

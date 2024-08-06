@@ -1,12 +1,12 @@
 from typing import List, Collection, NamedTuple, Tuple
 import networkx as nx
-from gym.utils import seeding
+from gymnasium.utils import seeding
 from ordered_set import OrderedSet
 from airlift.envs.airport import Airport, AirportID
 from airlift.envs.cargo import Cargo, CargoID
 from airlift.envs.events.event_generator import EventGenerator
 from airlift.envs.route_map import RouteMap
-from gym import logger
+from gymnasium import logger
 from airlift.utils.seeds import generate_seed
 
 
@@ -45,7 +45,7 @@ class CargoGenerator:
         Generates a random weight for a cargo.
         """
         if self.max_weight > 1:
-            return self._np_random.randint(1, self.max_weight)
+            return self._np_random.integers(1, self.max_weight)
         else:
             return 1
 
@@ -85,7 +85,7 @@ class StaticCargoGenerator(CargoGenerator):
         cargo_list = []
         for i in range(self.num_initial_tasks):
             if self.max_stagger_steps != 0:
-                stagger_duration = self._np_random.randint(0, self.max_stagger_steps)
+                stagger_duration = self._np_random.integers(0, self.max_stagger_steps)
             else:
                 stagger_duration = self.max_stagger_steps
             cargo_list.append(self.generate_cargo_order(i, self.routemap.drop_off_airports, self.routemap.pick_up_airports, time_available=stagger_duration))

@@ -2,7 +2,7 @@ import numpy.typing as npt
 import noise
 import numpy as np
 import math
-from gym.utils import seeding
+from gymnasium.utils import seeding
 from airlift.envs.world_map import FlatMap, FlatLandWaterMap, FlatLandOnlyMap
 
 

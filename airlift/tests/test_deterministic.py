@@ -1,5 +1,5 @@
 from airlift.solutions.solutions import doepisode
-from gym.utils import seeding
+from gymnasium.utils import seeding
 
 from airlift.solutions.baselines import RandomAgent, ShortestPath
 from airlift.envs.events.event_interval_generator import  EventIntervalGenerator

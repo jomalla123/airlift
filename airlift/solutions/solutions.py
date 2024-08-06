@@ -2,7 +2,7 @@ import random
 import time
 import timeit
 
-from gym.utils import seeding
+from gymnasium.utils import seeding
 
 
 class Solution:

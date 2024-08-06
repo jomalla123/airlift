@@ -3,13 +3,13 @@ import typing
 import networkx as nx
 import numpy as np
 
-import gym
-from gym import Space
-from gym.spaces.utils import flatdim, flatten
+import gymnasium
+from gymnasium import Space
+from gymnasium.spaces.utils import flatdim, flatten
 
 from airlift.utils.seeds import generate_seed
 
-# General note: it appears that recent versions of OpenAI gym are introducing similar space types (e.g., Sequence and Graph).
+# General note: it appears that recent versions of OpenAI gymnasium are introducing similar space types (e.g., Sequence and Graph).
 # We may use these in the future.
 
 class List(Space[typing.List]):
@@ -73,7 +73,7 @@ def _flatten_list(space: List, x) -> np.ndarray:
     return a
 
 
-class NamedTuple(gym.spaces.Tuple):
+class NamedTuple(gymnasium.spaces.Tuple):
     def __init__(
         self, namedtuple: typing.Type[typing.NamedTuple], spaces: typing.Dict[str, Space], seed: typing.Optional[typing.Union[int, typing.List[int]]] = None
     ):

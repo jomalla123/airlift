@@ -1,5 +1,5 @@
 from typing import Tuple, List, Set, Optional
-from gym.utils import seeding
+from gymnasium.utils import seeding
 
 from airlift.envs.agents import EnvAgent
 from airlift.envs.airport import Airport

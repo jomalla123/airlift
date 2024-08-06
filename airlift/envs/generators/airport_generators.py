@@ -2,7 +2,7 @@ import math
 import warnings
 from typing import Tuple, Collection, List, Optional
 import numpy as np
-from gym.utils import seeding
+from gymnasium.utils import seeding
 from airlift.envs.airport import Airport
 from airlift.envs.generators.map_generators import PlainMapGenerator, FlatMapGenerator
 from airlift.envs.world_map import FlatCoordinate, FlatMap, FlatArea, FlatCircle, FlatRectangle, EmptyArea

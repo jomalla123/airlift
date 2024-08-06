@@ -8,7 +8,7 @@ from typing import Dict
 
 import networkx.utils.misc
 
-import gym
+import gymnasium
 
 from airlift.utils.definitions import ROOT_DIR
 
@@ -58,7 +58,7 @@ def assert_histories_equal(history1, history2):
 
 
 # Should we use a PettingZoo wrapper?
-class HistoryWrapper(gym.Wrapper):
+class HistoryWrapper(gymnasium.Wrapper):
     def __init__(self, env):
         super().__init__(env)
         self.env = env

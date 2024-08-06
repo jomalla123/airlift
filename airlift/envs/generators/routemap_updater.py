@@ -5,7 +5,7 @@ from math import ceil
 
 import networkx as nx
 import numpy as np
-from gym.utils import seeding
+from gymnasium.utils import seeding
 
 from airlift.utils.seeds import generate_seed
 

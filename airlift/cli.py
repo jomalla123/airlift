@@ -1,5 +1,5 @@
 import time
-from gym import logger
+from gymnasium import logger
 
 from airlift.envs.plane_types import PlaneType
 from airlift.envs.generators.cargo_generators import DynamicCargoGenerator

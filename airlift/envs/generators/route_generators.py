@@ -4,9 +4,9 @@ from collections import Counter
 from math import ceil
 from typing import NamedTuple, Collection
 
-import gym
+import gymnasium
 import networkx as nx
-from gym.utils import seeding
+from gymnasium.utils import seeding
 from ordered_set import OrderedSet
 
 from airlift.envs.plane_types import PlaneTypeID
@@ -84,7 +84,7 @@ class RouteGenerator:
             # Get components. Quit when there is just one remaining.
             components = list(nx.strongly_connected_components(routemap.multigraph))
             if len(components) > 1:
-                gym.logger.warn("Route map contains multiple connected components - performing join...")
+                gymnasium.logger.warn("Route map contains multiple connected components - performing join...")
             else:
                 break
 

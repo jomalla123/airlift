@@ -2,7 +2,7 @@ import random
 from typing import List, Collection, Set, Dict, Any
 import networkx as nx
 import numpy as np
-from gym.utils import seeding
+from gymnasium.utils import seeding
 
 from airlift.envs.airport import Airport, AirportID
 from airlift.envs.events.event_interval_generator import EventIntervalGenerator

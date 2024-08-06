@@ -1,8 +1,8 @@
 from typing import List
 
 import networkx as nx
-from gym.utils import seeding
-from gym import logger
+from gymnasium.utils import seeding
+from gymnasium import logger
 
 from airlift.envs.airport import AirportID
 from airlift.envs.agents import EnvAgent

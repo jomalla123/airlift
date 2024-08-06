@@ -15,7 +15,7 @@ from airlift.tests.util import generate_environment
 # pytest unit_tests/test_petting_zoo.py --render
 
 # Note that we seed the default random number generators, but the environment still may have randomness since
-# the tests call env.reset() with no seed. It seems NumPy's SeedSequence method used by OpenAI Gym to generate seeds
+# the tests call env.reset() with no seed. It seems NumPy's SeedSequence method used by OpenAI gymnasium to generate seeds
 # will generate a random sequence if entropy=None regardless of whether the default generators are seeded.
 # (not positive, though)
 
@@ -33,8 +33,8 @@ def test_api():
 
     # Note this gives some warnings which we ignore:
     #    Observation is not NumPy array
-    #    Observation space for each agent probably should be gym.spaces.box or gym.spaces.discrete
-    #    Action space for each agent probably should be gym.spaces.box or gym.spaces.discrete
+    #    Observation space for each agent probably should be gymnasium.spaces.box or gymnasium.spaces.discrete
+    #    Action space for each agent probably should be gymnasium.spaces.box or gymnasium.spaces.discrete
     api_test(parallel_to_aec(createenv()))
 
 def test_parallel_api():

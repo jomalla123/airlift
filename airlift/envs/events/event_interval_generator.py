@@ -1,5 +1,5 @@
 from typing import NamedTuple
-from gym.utils import seeding
+from gymnasium.utils import seeding
 
 EventInterval = NamedTuple('EventInterval', [('num_broken_steps', int)])
 
